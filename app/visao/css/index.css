@@ -1,0 +1,307 @@
+@font-face {
+    font-family: "Atkinson Hyperlegible Regular";
+    src: url("/fontes/AtkinsonHyperlegible-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Atkinson Hyperlegible Bold";
+    src: url("/fontes/AtkinsonHyperlegible-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Fira Mono Bold";
+    src: url("/fontes/FiraMono-Bold.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Atkinson Hyperlegible Regular";
+}
+
+body {
+    background: linear-gradient(167deg, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 50%, rgba(40,0,0,1) 100%);
+    min-height: 100vh;
+    color: #fff;
+}
+
+div.mobile-bar-fix {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(167deg, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 50%, rgba(40,0,0,1) 100%);
+    z-index: -1;
+}
+
+i {
+    font-size: 1.5rem;
+    vertical-align: bottom;
+    margin: 0 .2rem;
+}
+
+i.bx-plus {
+    margin-left: -.5rem;
+    font-size: 1.2rem;
+    vertical-align: center;
+}
+
+header {
+    background-color: rgba(20, 20, 20, 0.8);
+    border-bottom: 1px solid rgba(255, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    padding: .4rem 1rem;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+header h1 {
+    font-family: "Atkinson Hyperlegible Bold";
+    font-size: 1.8rem;
+}
+
+/* nav ul {
+    margin-top: 1rem;
+} */
+
+nav ul li {
+    display: inline-block;
+}
+
+nav a {
+    text-decoration: none;
+    padding: .4rem .6rem;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: rgba(255, 0, 0, 0.2);
+    border-radius: 2rem;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+nav a:hover {
+    background-color: #ff0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    transform: scale(1.05);
+}
+
+nav a:visited {
+    color: white;
+}
+
+main {    
+    padding: 0 12rem;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1000px) {
+    main {
+        padding: 0 4rem;
+    }
+
+    nav a {
+        font-size: 0px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    main {
+        padding: 0 2rem;
+    }
+
+    section.player {
+        display: flex !important;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    header {
+        flex-direction: column;
+        row-gap: 1rem;
+    }    
+}
+
+@media screen and (max-width: 400px) {
+    main {
+        padding: 0;
+    }
+
+    section.player {
+        display: flex !important;
+        flex-direction: column;
+        padding: 1rem 0 !important;
+        border-radius: 0 !important;
+    }
+
+    section.player section.controles > div {
+        flex-direction: column !important;        
+    }
+
+    section.controles > div > div {
+        justify-content: center !important;
+        margin: .4rem 0;
+    }
+}
+
+section.albums form {
+    display: none;
+}
+
+section.player {
+    background-color: rgba(20, 20, 20, 0.8);
+    border: 1px solid rgba(255, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+section.player section{
+    /* overflow: hidden; */
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+section.player h2 {
+    font-family: "Atkinson Hyperlegible Bold";
+}
+
+section.player section div{    
+    width: 80%;
+}
+
+section.player select{
+    width: 100%;
+    max-height: 80%;
+    font-size: 1.1rem;
+    background-color: rgba(20, 20, 20, 0.8);
+    color: #fff;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+section.player select option{
+    padding: 0.8rem;
+    background-color: rgba(20, 20, 20, 0.95);
+    color: #fff;
+}
+
+section.player select option:hover {
+    background-color: #ff0000;
+}
+
+input {
+    display: block;
+    margin-bottom: 1rem;
+    padding: .4rem;
+    border: none;
+    border-bottom: 2px solid #00c2ff;
+    background-color: rgba(0, 0, 0, 0.049);
+    width: 100%;
+}
+
+input#seekbar[type="range"] {
+    margin-bottom: 0;
+    width: 90%;
+    accent-color: #ff0000;
+    border: none;
+    padding: 0;
+}
+
+section.player section.controles {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+section.player section.controles div {
+    width: 90%;
+    font-family: "Fira Mono Bold";
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    color: #0082c3;    
+    /* background-color: orange; */
+    /* padding-top: 1rem; */
+}
+
+section.player section.controles div span {
+    font-family: "Fira Mono Bold";
+    margin: 0 .4rem;    
+}
+
+section.controles audio {
+    display: none;
+}
+
+section.controles > div > div:first-of-type {
+    justify-content: left;
+}
+
+section.controles > div > div:last-of-type {
+    justify-content: right;
+}
+
+button.player-control {
+    padding: .4rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 1rem;
+    margin: 0 .1rem;
+    transition: ease-in-out .3s;
+    align-self: center;
+}
+
+button.player-control:hover {
+    background-color: rgba(255, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+button.player-control i {
+    font-size: 2.5rem !important;
+    color: #ff0000;
+}
+
+button#play-pause i {
+    font-size: 4rem !important;    
+}
+
+input#player-volume[type="range"] {
+    margin-bottom: 0;
+    width: 40%;
+    accent-color: #0082c3;
+    border: none;
+    padding: 0;
+}
+
+/* #volume-icon {
+    background-color: red;
+} */
+
+/* button#play-pause {
+    padding: .4rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 1rem;
+    transition: ease-in-out .3s;
+} */
+
+/* button#play-pause:hover {
+    background-color: #00c3ff2a;
+} */
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/js/select-filtro.js"></script>
+    <script src="/js/page_index.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/index.css">
+    <title>Player de Música POO</title>
+</head>
+
+<body>
+    <div class="mobile-bar-fix"></div>
+    <header>
+        <h1>Player de Música</h1>
+        <nav>
+            <ul>
+                <li><a href="/albuns"><i class='bx bx-album'></i>Álbuns</a></li>
+                <li><a href="/cadastro-artista"><i class='bx bx-plus'></i>Novo Artista</a></li>
+                <li><a href="/cadastro-album"><i class='bx bx-plus'></i>Novo Álbum</a></li>
+                <li><a href="/cadastro-musica"><i class='bx bx-plus'></i>Nova Música</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="player">
+            <section class="albums">
+                <form action="/" method="post" id="album-form">
+                    <input type="text" name="id_album" id="id_album">
+                </form>
+                <h2 class="section-h2">Selecione o Álbum:</h2>
+                <div class="select-albums">
+                    <select name="album" id="album" size="10">
+                        <% for (const alb of albums) {%>
+                            <option value="<%= alb.id%>">
+                                <%= alb.id %> - <%= alb.titulo %>
+                            </option>
+                        <% } %>
+                    </select>
+                    <input type="search" id="busca-album" name="busca-album">
+                </div>
+            </section>
+            <section class="musicas">
+                <h2 class="section-h2">Selecione a Música:</h2>
+                <div class="select-musicas">
+                    <select name="musica" id="musica" size="10">
+                        <% for (const m of musicas) {%>
+                            <option value="<%= m.id%>" musica="<%= m.arquivo %>">
+                                <%= m.id %> - <%= m.titulo %>
+                            </option>
+                        <% } %>
+                    </select>
+                    <input type="search" id="busca-musica" name="busca-musica">
+                </div>
+            </section>
+            <section class="controles">
+                <audio src="" id="player-de-musica" controls></audio>
+                <input type="range" id="seekbar" min="0" max="100" step="0.25" value="0">
+                <div>
+                    <div>
+                        <span id="tempo-atual">0:00</span>/<span id="tempo-total">0:00</span>
+                    </div>
+                    <div>
+                        <button id="previous" class="player-control"><i class='bx bx-skip-previous'></i></button>
+                        <button id="play-pause" class="player-control"><i class='bx bx-play-circle'></i></button>
+                        <button id="next" class="player-control"><i class='bx bx-skip-next'></i></button>
+                    </div>
+                    <div>
+                        <span id="volume-icon"><i class='bx bxs-volume-full'></i></span>
+                        <input type="range" min="0" max="1" step="0.01" id="player-volume" value="1">
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+
+</html>

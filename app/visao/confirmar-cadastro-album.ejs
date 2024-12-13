@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/cadastro-principal.css">
+    <link rel="stylesheet" href="/css/confirmar.css">
+    <title>Cadastro de Álbum: Confirmação</title>
+</head>
+<body>
+    <main>        
+        <% if (success !== -1) { %>
+            <section class="confirmar sucesso">
+                <h2><span><%= album.titulo %></span> Cadastrado com sucesso!</h2>
+            </section>
+        <% } else { %>
+            <section class="confirmar falha">
+                <h2><span>Erro ao cadastrar o Álbum :(</span></h2>
+            </section>
+        <% } %>        
+        <a href="/cadastro-album">Cadastrar Mais</a>
+        <a href="/">Página Inicial</a>
+    </main>   
+</body>
+</html>

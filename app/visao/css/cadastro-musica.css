@@ -1,0 +1,105 @@
+select#artista option {
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-image: none !important;
+    padding: 0.8rem;
+    background-color: rgba(20, 20, 20, 0.95);
+    color: #fff;
+}
+
+select#artista option:hover {
+    background-color: #ff0000;
+}
+
+section.cadastro form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+section.cadastro form div {
+    width: 100%;
+}
+
+section.cadastro div.painel-enviar {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.painel-foto {
+    text-align: left;
+}
+
+.painel-foto label {
+    display: block;
+    color: #fff;
+}
+
+img#foto-preview {
+    width: 40%;
+    border-radius: .6rem;
+    border: 2px solid #ff0000;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+img#foto-preview:hover {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    transform: scale(1.02);
+}
+
+.cadastro .painel-enviar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: end;
+}
+
+.cadastro .painel-enviar button {
+    width: auto;
+}
+
+.cadastro form span {
+    display: inline-block;
+    margin-bottom: .4rem;
+    color: #fff;
+}
+
+audio {
+    width: calc(80% + .8rem);
+    background-color: rgba(20, 20, 20, 0.8);
+    border-radius: none;
+    border-bottom: 2px solid #ff0000;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: rgba(20, 20, 20, 0.8);
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+    color: #fff;
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-mute-button {
+    background-color: #ff0000;
+    border-radius: 50%;
+}
+
+audio::-webkit-media-controls-volume-slider {
+    background-color: #ff0000;
+    border-radius: 25px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+audio::-webkit-media-controls-timeline {
+    background-color: #ff0000;
+    border-radius: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+}

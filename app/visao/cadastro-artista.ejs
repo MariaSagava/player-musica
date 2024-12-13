@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro de Artista</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Cadastro de Artista</h1>
+    
+    <form action="/confirmar-cadastro-artista" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        
+        <div>
+            <label for="pais">País:</label>
+            <input type="text" id="pais" name="pais" required>
+        </div>
+        
+        <div>
+            <label for="data_nasc">Data de Nascimento:</label>
+            <input type="date" id="data_nasc" name="data_nasc" required>
+        </div>
+        
+        <div>
+            <label for="foto">Foto:</label>
+            <input type="file" id="foto" name="foto" accept="image/*" required>
+        </div>
+        
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <% if (typeof error !== 'undefined' && error) { %>
+        <div class="error">
+            <%= error %>
+        </div>
+    <% } %>
+
+    <a href="/">Voltar para Home</a>
+</body>
+</html>

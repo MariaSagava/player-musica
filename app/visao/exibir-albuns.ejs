@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Álbuns | The Weeknd Style</title>
+    <link rel="stylesheet" href="/css/exibir-albuns.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="background-wrapper">
+        <div class="noise-overlay"></div>
+        <div class="gradient-overlay"></div>
+    </div>
+
+    <header>
+        <div class="logo">
+            <i class='bx bxs-album'></i>
+            <span>AFTER HOURS</span>
+        </div>
+        <nav>
+            <a href="/" class="nav-link">
+                <i class='bx bx-home'></i>
+                <span>Home</span>
+            </a>
+            <a href="/cadastro-album" class="nav-link">
+                <i class='bx bx-plus-circle'></i>
+                <span>Add Album</span>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content-header">
+            <h1>COLLECTION</h1>
+            <div class="filter-controls">
+                <input type="text" placeholder="Search albums..." class="search-input">
+                <select class="genre-filter">
+                    <option value="">All Genres</option>
+                    <% genres.forEach(function(genre) { %>
+                        <option value="<%= genre.toLowerCase() %>"><%= genre %></option>
+                    <% }); %>
+                </select>
+            </div>
+        </div>
+
+        <div class="albums-container">
+            <% if (albums && albums.length > 0) { %>
+                <% albums.forEach(function(album) { %>
+                    <div class="album-card" data-genre="<%= album.genero.toLowerCase() %>">
+                        <div class="album-artwork">
+                            <img src="/capas/<%= album.capa %>" alt="<%= album.titulo %>" 
+                                 onerror="this.src='/images/default-album.jpg'">
+                            <div class="album-actions">
+                                <button class="action-btn play" onclick="window.location.href='/?id_album=<%= album.id %>'">
+                                    <i class='bx bx-play'></i>
+                                </button>
+                                <button class="action-btn info" title="<%= album.totalMusicas %> músicas">
+                                    <i class='bx bx-music'></i>
+                                    <span class="track-count"><%= album.totalMusicas %></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="album-details">
+                            <h3 class="album-title"><%= album.titulo %></h3>
+                            <span class="album-genre"><%= album.genero %></span>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <div class="empty-state">
+                    <i class='bx bx-disc'></i>
+                    <h2>No Albums Found</h2>
+                    <p>Start building your collection by adding some albums</p>
+                    <a href="/cadastro-album" class="add-album-btn">
+                        <i class='bx bx-plus'></i>
+                        Add Your First Album
+                    </a>
+                </div>
+            <% } %>
+        </div>
+    </main>
+
+    <script>
+        // Filtro de busca e gênero
+        const searchInput = document.querySelector('.search-input');
+        const genreFilter = document.querySelector('.genre-filter');
+        const albumCards = document.querySelectorAll('.album-card');
+
+        function filterAlbums() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedGenre = genreFilter.value.toLowerCase();
+
+            albumCards.forEach(card => {
+                const title = card.querySelector('.album-title').textContent.toLowerCase();
+                const genre = card.dataset.genre;
+                const matchesSearch = title.includes(searchTerm);
+                const matchesGenre = !selectedGenre || genre === selectedGenre;
+
+                card.style.display = matchesSearch && matchesGenre ? 'block' : 'none';
+            });
+        }
+
+        searchInput.addEventListener('input', filterAlbums);
+        genreFilter.addEventListener('change', filterAlbums);
+    </script>
+</body>
+</html> 

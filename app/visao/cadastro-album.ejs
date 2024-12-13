@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/cadastro-principal.css">
+    <link rel="stylesheet" href="/css/cadastro-album.css">
+    <script src="/js/select-filtro.js"></script>
+    <script src="/js/cadastro-album.js"></script>
+    <!-- <script src="/js/cadastro-musica.js"></script> -->
+    <title>Cadastrar Álbum</title>
+</head>
+
+<body>
+    <main>
+        <section class="cadastro">
+            <form action="/confirmar-cadastro-album" enctype="multipart/form-data" method="POST">
+                <div class="painel-principal">
+                    <label for="titulo">Título do Álbum:</label>
+                    <input type="text" id="titulo" name="titulo" required>
+
+                    <label for="arquivo">Foto da capa:</label>
+                    <input type="file" id="arquivo" name="arquivo" accept=".png,.jpg,.webp" required>
+
+                    <label for="genero">Gênero musical:</label>
+                    <input type="text" id="genero" name="genero" required>
+                </div>
+                <div class="painel-foto">
+                    <label for="foto-preview">Preview da foto:</label>
+                    <img id="foto-preview" src="/img/placeholder.png" alt="">
+                </div>    
+                <div class="painel-enviar">
+                    <a href="/">Página inicial</a>
+                    <button type="submit">Cadastrar Álbum</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>

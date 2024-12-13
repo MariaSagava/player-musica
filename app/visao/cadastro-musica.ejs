@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Música</title>
+    <link rel="stylesheet" href="/css/cadastro-principal.css">
+    <link rel="stylesheet" href="/css/cadastro-musica.css">
+    <script src="/js/select-filtro.js"></script>
+    <script src="/js/cadastro-musica.js"></script>
+</head>
+<body>
+    <main>
+        <section class="cadastro">
+            <form action="/confirmar-cadastro-musica" enctype="multipart/form-data" method="POST">
+                <div class="painel-principal">
+                    <label for="titulo">Título da música:</label>
+                    <input type="text" id="titulo" name="titulo" required>
+
+                    <label for="arquivo">Caminho do Arquivo:</label>
+                    <input type="file" id="arquivo" name="arquivo" accept=".mp3" required>
+
+                    <label for="duracao">Duração (segundos):</label>
+                    <input type="number" id="duracao" name="duracao" required>
+
+                    <label for="genero">Gênero musical:</label>
+                    <input type="text" id="genero" name="genero" required>
+
+                    <span>Preview da música:</span>
+                    <audio id="musica-preview" controls></audio>
+                </div>
+
+                <div class="painel-select">
+                    <label for="artista">Artistas (O primeiro selecionado será o principal):</label>
+                    <select name="artista" id="artista" size="10" multiple>
+                        <% for (const a of artistas) {%>
+                            <option style="background-image: url('/fotos/<%= a.foto%>')" value="<%= a.id%>">
+                                <%= a.id %> - <%= a.nome %>
+                            </option>
+                        <% } %>
+                    </select>
+                    <input type="search" id="busca-artista" name="busca-artista">
+                </div>
+
+                <div class="painel-select">
+                    <label for="album">Álbum:</label>
+                    <select name="album" id="album" size="10">
+                        <% for (const alb of albums) {%>
+                            <option value="<%= alb.id%>">
+                                <%= alb.id %> - <%= alb.titulo %>
+                            </option>
+                        <% } %>
+                    </select>
+                    <input type="search" id="busca-album" name="busca-album">
+                </div>
+                <div class="painel-enviar">
+                    <a href="/">Página inicial</a>
+                    <button type="submit">Cadastrar Música</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
